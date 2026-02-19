@@ -1,9 +1,9 @@
 import { useState } from "react";
+import CustomButton from "@/components/ui/button";
+import InputField from "@/components/ui/input-field";
 import {
-  Button,
   StyleSheet,
   Text,
-  TextInput,
   View
 } from "react-native";
 
@@ -29,53 +29,17 @@ export default function Index() {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.homeText}>Hello{submitted ? `, ${name}` : ""}!</Text>
-      <View style={styles.inputContainer}>
-        <Text style={styles.inputLabel}>What's your name?</Text>
-        <TextInput
-          onChangeText={onChangeText}
-          value={name}
-          style={styles.input}
-        />
+    <View className="w-full h-full items-center justify-center gap-5">
+      <Text className="text-5xl font-bold">Hello{submitted ? `, ${name}` : ""}!</Text>
+      <View className="flex gap-2 max-w-3/5">
+        <Text className="text-2xl font-semibold text-center">What's your name?</Text>
+        <InputField onChangeText={onChangeText} value={name} />
       </View>
-      <Button
+      <CustomButton
         onPress={handleSubmit}
         title={submitted ? "Reset" : "Submit"}
-        color="#CA7669"
         accessibilityLabel="Name submission button"
       />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 20,
-  },
-  homeText: {
-    fontWeight: "bold",
-    fontSize: 40,
-  },
-  inputContainer: {
-    padding: 20,
-    width: "75%",
-  },
-  inputLabel: {
-    fontWeight: "semibold",
-    fontSize: 20,
-    textAlign: "center",
-  },
-  input: {
-    borderWidth: 1,
-    margin: 12,
-    paddingTop: 2,
-    paddingBottom: 2,
-    paddingHorizontal: 5,
-    fontSize: 15,
-    color: "black",
-  },
-})
